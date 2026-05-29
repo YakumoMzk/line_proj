@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字可视化</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <script src="js/flexible.js"></script>
+  <!-- 头部盒子 -->
+  <header>
+    <h1>可视化展示-Echarts</h1>
+    <div class="showTime"></div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000);//开始运行
+      function time() {
+        clearTimeout(t);//清除定时器
+        var dt = new Date();
+        var y = dt.getFullYear();
+        var m = dt.getMonth() + 1;
+        var d = dt.getDate();
+        var h = dt.getHours();//获取时
+        var mm = dt.getMinutes();//获取分
+        var s = dt.getSeconds();// 获取秒
+        document.querySelector('.showTime').innerHTML = '当前时间:' + y + '年' + m + '月' + d + '日 ' + h + ':' + mm + ':' + s;//显示时间
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+  </header>
+
+  <!-- 主体部分盒子 -->
+  <section class="mainbox">
+    <div class="column">
+
+      <div class="panel bar">
+        <h2>柱状图-报到率</h2>
+        <div class="chart"></div>
+        <div class="panel_footer"></div>
+      </div>
+
+      <div class="panel line">
+        <h2>折线图-就业行业</h2>
+        <div class="chart">图表</div>
+        <div class="panel_footer"></div>
+      </div>
+
+      <div class="panel pie">
+        <h2>饼图-就业行业</h2>
+        <div class="chart">图表</div>
+        <div class="panel_footer"></div>
+      </div>
+
+
+    </div>
+    <!-- 模块左 -->
+
+    <div class="column">
+      <!-- 数字模块(模块中上) -->
+      <div class="no">
+        <div class="no_hd">
+          <ul>
+            <li>123123</li>
+            <li>123421</li>
+          </ul>
+        </div>
+        <div class="no_bd">
+          <ul>
+            <li>前端需求人数</li>
+            <li>市场供应人数</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 地图模块(模块中下) -->
+      <div class="map">
+        <div class="map1"></div>
+        <div class="map2"></div>
+        <div class="map3"></div>
+      </div>
+
+    </div>
+    <!-- 模块中 -->
+
+    <div class="column">
+      <div class="panel bar2">
+        <h2>柱状图-报道人数</h2>
+        <div class="chart"></div>
+        <div class="panel_footer"></div>
+      </div>
+
+      <div class="panel line2">
+        <h2>折线图-就业行业</h2>
+        <div class="chart">图表</div>
+        <div class="panel_footer"></div>
+      </div>
+
+      <div class="panel pie2">
+        <h2>饼图-就业行业</h2>
+        <div class="chart">图表</div>
+        <div class="panel_footer"></div>
+      </div>
+    </div>
+    <!-- 模块右 -->
+
+  </section>
+
+</body>
+
+
+
+<script src="js/flexible.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/index.js"></script>
+
+
+</html>
