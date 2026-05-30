@@ -404,3 +404,208 @@
     myChart.resize();
   });
 })();
+
+//折线图1模块
+(function () {
+  var myChart = echarts.init(document.querySelector(".line .chart"));
+  var option = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['今年报到率', '往年报到率'],
+      textStyle: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12px"
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: [],
+      axisLabel: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12px"
+      },
+      axisLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      max: 100,
+      axisLabel: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12px"
+      },
+      axisLine: {
+        lineStyle: {
+          color: "rgba(255,255,255,.1)",
+          width: 1,
+          type: "solid"
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(255,255,255,.1)"
+        }
+      }
+    },
+    series: [
+      {
+        name: '今年报到率',
+        type: 'line',
+        smooth: true,
+        data: [],
+        lineStyle: {
+          color: '#2f89cf'
+        },
+        itemStyle: {
+          color: '#2f89cf'
+        }
+      },
+      {
+        name: '往年报到率',
+        type: 'line',
+        smooth: true,
+        data: [],
+        lineStyle: {
+          color: '#ff6b6b'
+        },
+        itemStyle: {
+          color: '#ff6b6b'
+        }
+      }
+    ]
+  };
+
+  $.getJSON("http://localhost/line_proj/php/get_rate_compare.php", function (data) {
+    myChart.setOption({
+      xAxis: {
+        data: data.depart
+      },
+      series: [
+        {
+          data: data.rate
+        },
+        {
+          data: data.last_rate
+        }
+      ]
+    });
+  });
+
+  myChart.setOption(option);
+
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
+
+//折线图2模块
+(function () {
+  var myChart = echarts.init(document.querySelector(".line2 .chart"));
+  var option = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['计划招生数', '实际报到数'],
+      textStyle: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12px"
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: [],
+      axisLabel: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12px"
+      },
+      axisLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        color: "rgba(255,255,255,.6)",
+        fontSize: "12px"
+      },
+      axisLine: {
+        lineStyle: {
+          color: "rgba(255,255,255,.1)",
+          width: 1,
+          type: "solid"
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(255,255,255,.1)"
+        }
+      }
+    },
+    series: [
+      {
+        name: '计划招生数',
+        type: 'line',
+        smooth: true,
+        data: [],
+        lineStyle: {
+          color: '#4cc7ff'
+        },
+        itemStyle: {
+          color: '#4cc7ff'
+        }
+      },
+      {
+        name: '实际报到数',
+        type: 'line',
+        smooth: true,
+        data: [],
+        lineStyle: {
+          color: '#ffa726'
+        },
+        itemStyle: {
+          color: '#ffa726'
+        }
+      }
+    ]
+  };
+
+  $.getJSON("http://localhost/line_proj/php/get_report_num.php", function (data) {
+    myChart.setOption({
+      xAxis: {
+        data: data.depart
+      },
+      series: [
+        {
+          data: data.plan_num
+        },
+        {
+          data: data.come_num
+        }
+      ]
+    });
+  });
+
+  myChart.setOption(option);
+
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
