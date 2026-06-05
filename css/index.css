@@ -229,3 +229,10 @@ header .showTime {
   opacity: 0.6;
   animation: rotation2 15s linear infinite;
 }
+.map .chart {
+  position: absolute;
+  height: 10.125rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
